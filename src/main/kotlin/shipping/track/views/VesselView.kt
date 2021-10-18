@@ -1,5 +1,6 @@
 package shipping.track.views
 
+import shipping.track.models.VesselJSONStore
 import shipping.track.models.VesselModel
 import shipping.track.models.VesselMemStore
 
@@ -15,6 +16,7 @@ class VesselView {
         println(" 2. Update Vessel")
         println(" 3. List All Vessels")
         println(" 4. Search Vessels")
+        println(" 5. Delete Vessel")
         println("-1. Exit")
         println()
         print("Enter Option : ")
@@ -26,7 +28,7 @@ class VesselView {
         return option
     }
 
-    fun listVessels(vessels : VesselMemStore) {
+    fun listVessels(vessels : VesselJSONStore) {
         println("List All Vessels")
         println()
         vessels.logAll()
@@ -37,7 +39,7 @@ class VesselView {
         if(vessel != null)
             println("Vessel Details [ $vessel ]")
         else
-            println("Vessel Not Found...")
+            println("Vessel Not Found")
     }
 
     fun addVesselData(vessel: VesselModel) : Boolean {

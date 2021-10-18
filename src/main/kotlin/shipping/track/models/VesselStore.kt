@@ -5,4 +5,5 @@ interface VesselStore {
     fun findOne(id: Long): VesselModel?
     fun create(vessel: VesselModel)
     fun update(vessel: VesselModel)
+    fun delete(vessel: VesselModel)
 }

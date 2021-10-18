@@ -36,7 +36,11 @@ class VesselMemStore : VesselStore {
         }
     }
 
+    override fun delete(vessel: VesselModel) {
+        vessels.remove(vessel)
+    }
+
     internal fun logAll() {
-        vessels.forEach { logger.info("${it}") }
+        vessels.forEach { logger.info("$it") }
     }
 }

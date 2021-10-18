@@ -1,21 +1,38 @@
 package shipping.track.controllers
 
 import mu.KotlinLogging
-import shipping.track.models.*
+import shipping.track.main.controller
+import shipping.track.models.VesselJSONStore
+import shipping.track.models.VesselModel
 import shipping.track.views.VesselView
 
 class VesselController {
 
-    val vessels = VesselMemStore()
-    val vesselView = VesselView()
-    val logger = KotlinLogging.logger {}
+    fun start(){
+        logger.info { "Launching" }
+        println("Vessel Tracking Version 1.0")
 
-    init {
-        logger.info { "Launching Vessel Tracking App" }
-        println("Vessel Tracking App Version 1.0")
+        var input: Int
+
+        do {
+            input = vesselView.menu()
+            when (input) {
+                1 -> add()
+                2 -> update()
+                3 -> list()
+                4 -> search()
+                5 -> delete()
+                -1 -> println("Exiting App")
+                else -> println("Invalid Option")
+            }
+            println()
+        } while (input != -1)
+        logger.info { "Shutting Down Vessel Tracking" }
     }
 
-    fun menu() :Int { return vesselView.menu() }
+    val vessels = VesselJSONStore()
+    val vesselView = VesselView()
+    val logger = KotlinLogging.logger {}
 
     fun add(){
         var aVessel = VesselModel()
@@ -46,23 +63,30 @@ class VesselController {
                 logger.info("Vessel Not Updated")
         }
         else
-            println("Vessel Not Updated...")
+            println("Vessel Not Updated")
     }
+
+    fun delete() {
+        vesselView.listVessels(vessels)
+        var searchId = vesselView.getId()
+        val aVessel = search(searchId)
+
+        if(aVessel != null) {
+            vessels.delete(aVessel)
+            println("Vessel Deleted")
+        }
+        else
+            println("Vessel Not Deleted")
+    }
+
 
     fun search() {
         val aVessel = search(vesselView.getId())!!
         vesselView.showVessel(aVessel)
     }
 
-
     fun search(id: Long) : VesselModel? {
         var foundVessel = vessels.findOne(id)
         return foundVessel
-    }
-
-    fun dummyData() {
-        vessels.create(VesselModel(name = "Samskip Express", arrivalTime = "18:00"))
-        vessels.create(VesselModel(name= "Arklow Dawn", arrivalTime = "04:00"))
-        vessels.create(VesselModel(name = "Arklow Dusk", arrivalTime = "13:50"))
     }
 }
