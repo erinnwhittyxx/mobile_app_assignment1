@@ -53,6 +53,12 @@ class VesselJSONStore : VesselStore {
         serialize()
     }
 
+//    override fun filter(vessel: VesselModel){
+//        vessels.filterIsInstance<String>().forEach {
+//            println(it.uppercase())
+//        }
+//    }
+
     override fun delete(vessel: VesselModel) {
         vessels.remove(vessel)
         serialize()

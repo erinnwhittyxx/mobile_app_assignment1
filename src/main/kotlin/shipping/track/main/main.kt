@@ -8,10 +8,7 @@ import shipping.track.views.VesselView
 
 private val logger = KotlinLogging.logger {}
 
-//var vessels = VesselMemStore()
 val vessels = VesselJSONStore()
-val VesselView = VesselView()
-val controller = VesselController()
 
 fun main(args: Array<String>) {
     VesselController().start()

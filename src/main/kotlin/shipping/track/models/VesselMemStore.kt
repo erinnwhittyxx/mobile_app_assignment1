@@ -40,6 +40,12 @@ class VesselMemStore : VesselStore {
         vessels.remove(vessel)
     }
 
+//    override fun filter(vessel: VesselModel) {
+//        vessels.filterIsInstance<String>().forEach {
+//            println(it.uppercase())
+//        }
+//    }
+
     internal fun logAll() {
         vessels.forEach { logger.info("$it") }
     }

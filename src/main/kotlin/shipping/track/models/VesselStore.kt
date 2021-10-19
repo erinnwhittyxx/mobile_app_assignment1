@@ -6,4 +6,5 @@ interface VesselStore {
     fun create(vessel: VesselModel)
     fun update(vessel: VesselModel)
     fun delete(vessel: VesselModel)
+//    fun filter(vessel: VesselModel)
 }

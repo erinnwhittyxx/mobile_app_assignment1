@@ -2,16 +2,25 @@
   {
     "id": -8789257874205667227,
     "name": "Samskip Express",
-    "arrivalTime": "18:00"
+    "arrivalTime": "18:00",
+    "length": 0
   },
   {
     "id": -3999448894496889730,
     "name": "Blue Antares",
-    "arrivalTime": "21:00"
+    "arrivalTime": "21:00",
+    "length": 0
   },
   {
     "id": 6780229774000052358,
     "name": "Samskip Endeavour",
-    "arrivalTime": "14:00"
+    "arrivalTime": "14:00",
+    "length": 0
+  },
+  {
+    "id": 137376057157675201,
+    "name": "StringProperty [bean: tornadofx.ViewModel@4219f804, value: Samskip Express]",
+    "arrivalTime": "StringProperty [bean: tornadofx.ViewModel@4219f804, value: 18:00]",
+    "length": 0
   }
 ]

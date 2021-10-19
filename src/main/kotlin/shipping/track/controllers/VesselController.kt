@@ -1,7 +1,7 @@
 package shipping.track.controllers
 
 import mu.KotlinLogging
-import shipping.track.main.controller
+//import shipping.track.main.controller
 import shipping.track.models.VesselJSONStore
 import shipping.track.models.VesselModel
 import shipping.track.views.VesselView
@@ -22,6 +22,7 @@ class VesselController {
                 3 -> list()
                 4 -> search()
                 5 -> delete()
+//                6 -> filter()
                 -1 -> println("Exiting App")
                 else -> println("Invalid Option")
             }
@@ -78,6 +79,10 @@ class VesselController {
         else
             println("Vessel Not Deleted")
     }
+
+//    fun filter(){
+//        vesselView.filterVessels(vessels)
+//    }
 
 
     fun search() {

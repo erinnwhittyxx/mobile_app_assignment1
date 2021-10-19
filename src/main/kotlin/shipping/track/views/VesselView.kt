@@ -1,5 +1,6 @@
 package shipping.track.views
 
+import shipping.track.main.vessels
 import shipping.track.models.VesselJSONStore
 import shipping.track.models.VesselModel
 import shipping.track.models.VesselMemStore
@@ -17,6 +18,7 @@ class VesselView {
         println(" 3. List All Vessels")
         println(" 4. Search Vessels")
         println(" 5. Delete Vessel")
+//        println(" 6. Filter Vessels")
         println("-1. Exit")
         println()
         print("Enter Option : ")
@@ -74,8 +76,8 @@ class VesselView {
     }
 
     fun getId() : Long {
-        var strId : String? // String to hold user input
-        var searchId : Long // Long to hold converted id
+        var strId : String?
+        var searchId : Long
         print("Enter id to Search/Update : ")
         strId = readLine()!!
         searchId = if (strId.toLongOrNull() != null && !strId.isEmpty())
