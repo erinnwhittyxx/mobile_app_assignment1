@@ -19,56 +19,56 @@ fun generateRandomId(): Long {
     return Random().nextLong()
 }
 
-    class VesselJSONStore : VesselStore {
+class VesselJSONStore : VesselStore {
 
-        var vessels = mutableListOf<VesselModel>()
+    var vessels = mutableListOf<VesselModel>()
 
-        init {
-            if (exists(JSON_FILE)) {
-                deserialize()
-            }
-        }
-
-        override fun findAll(): MutableList<VesselModel> {
-            return vessels
-        }
-
-        override fun findOne(id: Long): VesselModel? {
-            var foundVessel: VesselModel? = vessels.find { p -> p.id == id }
-            return foundVessel
-        }
-
-        override fun create(vessel: VesselModel) {
-            vessel.id = generateRandomId()
-            vessels.add(vessel)
-            serialize()
-        }
-
-        override fun update(vessel: VesselModel) {
-            var foundVessel = findOne(vessel.id!!)
-            if (foundVessel != null) {
-                foundVessel.name = vessel.name
-                foundVessel.arrivalTime = vessel.arrivalTime
-            }
-            serialize()
-        }
-
-        override fun delete(vessel: VesselModel) {
-            vessels.remove(vessel)
-            serialize()
-        }
-
-        internal fun logAll() {
-            vessels.forEach { logger.info("$it") }
-        }
-
-        private fun serialize() {
-            val jsonString = gsonBuilder.toJson(vessels, listType)
-            write(JSON_FILE, jsonString)
-        }
-
-        private fun deserialize() {
-            val jsonString = read(JSON_FILE)
-            vessels = Gson().fromJson(jsonString, listType)
+    init {
+        if (exists(JSON_FILE)) {
+            deserialize()
         }
     }
+
+    override fun findAll(): MutableList<VesselModel> {
+        return vessels
+    }
+
+    override fun findOne(id: Long): VesselModel? {
+        var foundVessel: VesselModel? = vessels.find { p -> p.id == id }
+        return foundVessel
+    }
+
+    override fun create(vessel: VesselModel) {
+        vessel.id = generateRandomId()
+        vessels.add(vessel)
+        serialize()
+    }
+
+    override fun update(vessel: VesselModel) {
+        var foundVessel = findOne(vessel.id!!)
+        if (foundVessel != null) {
+            foundVessel.name = vessel.name
+            foundVessel.arrivalTime = vessel.arrivalTime
+        }
+        serialize()
+    }
+
+    override fun delete(vessel: VesselModel) {
+        vessels.remove(vessel)
+        serialize()
+    }
+
+    internal fun logAll() {
+        vessels.forEach { println("${it}") }
+    }
+
+    private fun serialize() {
+        val jsonString = gsonBuilder.toJson(vessels, listType)
+        write(JSON_FILE, jsonString)
+    }
+
+    private fun deserialize() {
+        val jsonString = read(JSON_FILE)
+        vessels = Gson().fromJson(jsonString, listType)
+    }
+}

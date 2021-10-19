@@ -1,0 +1,17 @@
+[
+  {
+    "id": -8789257874205667227,
+    "name": "Samskip Express",
+    "arrivalTime": "18:00"
+  },
+  {
+    "id": -3999448894496889730,
+    "name": "Blue Antares",
+    "arrivalTime": "21:00"
+  },
+  {
+    "id": 6780229774000052358,
+    "name": "Samskip Endeavour",
+    "arrivalTime": "14:00"
+  }
+]
