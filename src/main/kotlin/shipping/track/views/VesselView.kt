@@ -1,9 +1,8 @@
 package shipping.track.views
 
-import shipping.track.main.vessels
 import shipping.track.models.VesselJSONStore
 import shipping.track.models.VesselModel
-import shipping.track.models.VesselMemStore
+
 
 class VesselView {
 
@@ -12,16 +11,24 @@ class VesselView {
         var option : Int
         var input: String?
 
-        println("MAIN MENU")
-        println(" 1. Add Vessel")
+        val RESET = "\u001b[0m"
+        val PURPLE_BACKGROUND = "\u001b[45m"
+        val BLUE_BACKGROUND = "\u001B[44m"
+        val TEXT_BLACK = "\u001B[30m"
+        val TEXT_BLUE = "\u001B[34m"
+        val BLACK_BOLD = "\u001B[1;30m"
+
+        println( BLUE_BACKGROUND + BLACK_BOLD + "MAIN MENU" + RESET)
+        println(TEXT_BLUE + " 1. Add Vessel")
         println(" 2. Update Vessel")
         println(" 3. List All Vessels")
         println(" 4. Search Vessels")
         println(" 5. Delete Vessel")
 //        println(" 6. Filter Vessels")
-        println("-1. Exit")
+        println("-99. For Dummy Data")
+        println("-1. Exit" + RESET)
         println()
-        print("Enter Option : ")
+        print(PURPLE_BACKGROUND + TEXT_BLACK + "Enter Option : " + RESET)
         input = readLine()!!
         option = if (input.toIntOrNull() != null && !input.isEmpty())
             input.toInt()

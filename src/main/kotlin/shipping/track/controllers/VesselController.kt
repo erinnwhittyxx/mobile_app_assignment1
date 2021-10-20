@@ -23,6 +23,7 @@ class VesselController {
                 4 -> search()
                 5 -> delete()
 //                6 -> filter()
+                -99 -> dummyData()
                 -1 -> println("Exiting App")
                 else -> println("Invalid Option")
             }
@@ -93,5 +94,11 @@ class VesselController {
     fun search(id: Long) : VesselModel? {
         var foundVessel = vessels.findOne(id)
         return foundVessel
+    }
+
+    fun dummyData() {
+        vessels.create(VesselModel(name = "Adamoon", arrivalTime = "17:00", draught = 8.1))
+        vessels.create(VesselModel(name= "Plato", arrivalTime = "06:09", draught = 5.1))
+        vessels.create(VesselModel(name = "X Press Agility", arrivalTime = "02:00", draught = 8.1))
     }
 }
