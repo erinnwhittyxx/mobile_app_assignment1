@@ -24,7 +24,7 @@ class VesselView {
         println(" 3. List All Vessels")
         println(" 4. Search Vessels")
         println(" 5. Delete Vessel")
-//        println(" 6. Filter Vessels")
+        println(" 6. Filter Vessels By Name")
         println("-99. For Dummy Data")
         println("-1. Exit" + RESET)
         println()
@@ -92,5 +92,13 @@ class VesselView {
         else
             -9
         return searchId
+    }
+
+    fun getName() : String {
+        var strName : String?
+
+        print("Enter Vessel Name: ")
+        strName = readLine()!!
+        return strName
     }
 }

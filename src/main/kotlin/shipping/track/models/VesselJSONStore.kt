@@ -38,6 +38,11 @@ class VesselJSONStore : VesselStore {
         return foundVessel
     }
 
+    override fun findName(name: String): MutableList<VesselModel> {
+        var foundVessel: VesselModel? = vessels.find { p -> p.name.contains(name)}
+        for vessel in vessels:
+    }
+
     override fun create(vessel: VesselModel) {
         vessel.id = generateRandomId()
         vessels.add(vessel)
@@ -52,12 +57,6 @@ class VesselJSONStore : VesselStore {
         }
         serialize()
     }
-
-//    override fun filter(vessel: VesselModel){
-//        vessels.filterIsInstance<String>().forEach {
-//            println(it.uppercase())
-//        }
-//    }
 
     override fun delete(vessel: VesselModel) {
         vessels.remove(vessel)

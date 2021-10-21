@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="shipping.track.controllers.VesselControllerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-10-21T16:51:16" hostname="DESKTOP-FT0S4OL" time="0.078">
+  <properties/>
+  <testcase name="deleteOneTest()" classname="shipping.track.controllers.VesselControllerTest" time="0.029"/>
+  <testcase name="findOneTest()" classname="shipping.track.controllers.VesselControllerTest" time="0.004"/>
+  <testcase name="updateTest()" classname="shipping.track.controllers.VesselControllerTest" time="0.008"/>
+  <testcase name="findAllTest()" classname="shipping.track.controllers.VesselControllerTest" time="0.003"/>
+  <testcase name="createTest()" classname="shipping.track.controllers.VesselControllerTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

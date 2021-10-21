@@ -22,6 +22,11 @@ class VesselMemStore : VesselStore {
         return foundVessel
     }
 
+    override fun findName(name: String): VesselModel? {
+        var foundVessel: VesselModel? = vessels.find { p -> p.name == name }
+        return foundVessel
+    }
+
     override fun create(vessel: VesselModel) {
         vessel.id = getId()
         vessels.add(vessel)
@@ -40,11 +45,6 @@ class VesselMemStore : VesselStore {
         vessels.remove(vessel)
     }
 
-//    override fun filter(vessel: VesselModel) {
-//        vessels.filterIsInstance<String>().forEach {
-//            println(it.uppercase())
-//        }
-//    }
 
     internal fun logAll() {
         vessels.forEach { logger.info("$it") }

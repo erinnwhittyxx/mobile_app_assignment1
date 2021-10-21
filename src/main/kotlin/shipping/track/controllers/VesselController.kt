@@ -22,7 +22,7 @@ class VesselController {
                 3 -> list()
                 4 -> search()
                 5 -> delete()
-//                6 -> filter()
+                6 -> filterByName()
                 -99 -> dummyData()
                 -1 -> println("Exiting App")
                 else -> println("Invalid Option")
@@ -81,9 +81,16 @@ class VesselController {
             println("Vessel Not Deleted")
     }
 
-//    fun filter(){
-//        vesselView.filterVessels(vessels)
-//    }
+    fun filterByName() {
+        val aVessel = filterByName(vesselView.getName())!!
+        vesselView.showVessel(aVessel)
+    }
+
+    fun filterByName(name: String) : VesselModel? {
+        var foundVessel = vessels.findName(name)
+        return foundVessel
+
+    }
 
 
     fun search() {

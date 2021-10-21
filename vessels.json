@@ -1,20 +1,32 @@
 [
   {
-    "id": -8789257874205667227,
-    "name": "Samskip Express",
-    "arrivalTime": "18:00",
-    "draught": 6.0
-  },
-  {
     "id": -3999448894496889730,
     "name": "Blue Antares",
     "arrivalTime": "21:00",
-    "draught": 6.4
+    "draught": 0.14616131035288027
   },
   {
     "id": 6780229774000052358,
     "name": "Samskip Endeavour",
     "arrivalTime": "14:00",
     "draught": 6.8
+  },
+  {
+    "id": 1823097649931222667,
+    "name": "Samskip Express",
+    "arrivalTime": "18:00",
+    "draught": 6.0
+  },
+  {
+    "id": -5797544082965172004,
+    "name": "Samskip",
+    "arrivalTime": "18:00",
+    "draught": 6.0
+  },
+  {
+    "id": 2164824339979387138,
+    "name": "Arklow Dawn",
+    "arrivalTime": "20:30",
+    "draught": 6.4
   }
 ]
