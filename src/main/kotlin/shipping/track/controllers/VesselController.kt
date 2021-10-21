@@ -15,7 +15,7 @@ class VesselController {
         var input: Int
 
         do {
-            input = vesselView.menu()
+            input = vesselView.menu()                                               //Loops menu until user input/selection is -1 (exit)
             when (input) {
                 1 -> add()
                 2 -> update()
@@ -32,11 +32,11 @@ class VesselController {
         logger.info { "Shutting Down Vessel Tracking" }
     }
 
-    val vessels = VesselJSONStore()
-    val vesselView = VesselView()
-    val logger = KotlinLogging.logger {}
+    val vessels = VesselJSONStore()                                                 //Create vessel list
+    val vesselView = VesselView()                                                   //Connects user to controller
+    val logger = KotlinLogging.logger {}                                            //Logging/Debugging
 
-    fun add(){
+    fun add(){                                                                      //Add
         var aVessel = VesselModel()
 
         if (vesselView.addVesselData(aVessel))
@@ -45,11 +45,11 @@ class VesselController {
             logger.info("Vessel Not Added")
     }
 
-    fun list() {
+    fun list() {                                                                    //Lists All Vessels
         vesselView.listVessels(vessels)
     }
 
-    fun update() {
+    fun update() {                                                                  //Updates
 
         vesselView.listVessels(vessels)
         var searchId = vesselView.getId()
@@ -68,7 +68,7 @@ class VesselController {
             println("Vessel Not Updated")
     }
 
-    fun delete() {
+    fun delete() {                                                                  //Delete
         vesselView.listVessels(vessels)
         var searchId = vesselView.getId()
         val aVessel = search(searchId)
@@ -81,11 +81,11 @@ class VesselController {
             println("Vessel Not Deleted")
     }
 
-    fun filterByName() {
+    fun filterByName() {                                                            //Calls method in VesselView to pass vessels list
         vesselView.filteredByVesselName(vessels)
     }
 
-    fun search() {
+    private fun search() {
         val aVessel = search(vesselView.getId())!!
         vesselView.showVessel(aVessel)
     }

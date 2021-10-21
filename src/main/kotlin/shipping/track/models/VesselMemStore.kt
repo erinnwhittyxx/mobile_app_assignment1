@@ -19,7 +19,7 @@ class VesselMemStore : VesselStore {
     }
 
     override fun findOne(id: Long) : VesselModel? {
-        var foundVessel: VesselModel? = vessels.find { p -> p.id == id }
+        var foundVessel: VesselModel? = vessels.find { p -> p.id == id }                    //Searches till it finds an ID match
         return foundVessel
     }
 
@@ -34,6 +34,7 @@ class VesselMemStore : VesselStore {
         if (foundVessel != null) {
             foundVessel.name = vessel.name
             foundVessel.arrivalTime = vessel.arrivalTime
+            foundVessel.draught = vessel.draught
         }
     }
 
@@ -41,10 +42,10 @@ class VesselMemStore : VesselStore {
         vessels.remove(vessel)
     }
 
-    override fun filterByName(name: String) :MutableList<VesselModel> {
+    override fun filterByName(name: String) :MutableList<VesselModel> {                         //Iterates over the full list of vessels, and if
         vessels.forEach{
-            if(it.name.contains(name)){
-                filteredName.add(it)
+            if(it.name.contains(name)){                                                         //a vessels name contains the name searched for it
+                filteredName.add(it)                                                            //adds it to the list
             }
         }
         return filteredName

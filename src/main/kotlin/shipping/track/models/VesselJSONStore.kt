@@ -11,58 +11,59 @@ import java.util.*
 
 private val logger = KotlinLogging.logger {}
 
-val JSON_FILE = "vessels.json"
+val JSON_FILE = "vessels.json"                                                          //Sets location file
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
 val listType = object : TypeToken<java.util.ArrayList<VesselModel>>() {}.type
 
-fun generateRandomId(): Long {
+fun generateRandomId(): Long {                                                          //Generates random ID number
     return Random().nextLong()
 }
 
 class VesselJSONStore : VesselStore {
 
-    var vessels = mutableListOf<VesselModel>()
-    var filteredName = mutableListOf<VesselModel>()
+    var vessels = mutableListOf<VesselModel>()                                          //Vessels ArrayList
+    var filteredName = mutableListOf<VesselModel>()                                     //Filtered By Name ArrayList
 
     init {
-        if (exists(JSON_FILE)) {
-            deserialize()
+        if (exists(JSON_FILE)) {                                                        //If file is present -> convert data
+            deserialize()                                                               //to runtime objects
         }
     }
 
-    override fun findAll(): MutableList<VesselModel> {
+    override fun findAll(): MutableList<VesselModel> {                                  //Returns all vessels in ArrayList
         return vessels
     }
 
-    override fun findOne(id: Long): VesselModel? {
+    override fun findOne(id: Long): VesselModel? {                                      //Finds vessel from ID search
         var foundVessel: VesselModel? = vessels.find { p -> p.id == id }
         return foundVessel
     }
 
-    override fun create(vessel: VesselModel) {
-        vessel.id = generateRandomId()
+    override fun create(vessel: VesselModel) {                                           //Assigns random ID and adds new Vessel
+        vessel.id = generateRandomId()                                                   //to list
         vessels.add(vessel)
         serialize()
     }
 
-    override fun update(vessel: VesselModel) {
+    override fun update(vessel: VesselModel) {                                            //Finds vessel by ID and adds updated parameters
         var foundVessel = findOne(vessel.id!!)
         if (foundVessel != null) {
             foundVessel.name = vessel.name
             foundVessel.arrivalTime = vessel.arrivalTime
+            foundVessel.draught = vessel.draught
         }
         serialize()
     }
 
-    override fun delete(vessel: VesselModel) {
+    override fun delete(vessel: VesselModel) {                                            //Deletes vessel from ArrayList
         vessels.remove(vessel)
         serialize()
     }
 
-    override fun filterByName(name: String) :MutableList<VesselModel> {
+    override fun filterByName(name: String) :MutableList<VesselModel> {                   //Iterates over the full list of vessels, and if
         vessels.forEach{
-            if(it.name.contains(name)){
-                filteredName.add(it)
+            if(it.name.contains(name)){                                                   //a vessels name contains the name searched for it
+                filteredName.add(it)                                                      //adds it to the list
             }
         }
         return filteredName
