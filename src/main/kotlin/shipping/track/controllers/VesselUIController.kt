@@ -6,6 +6,7 @@ import shipping.track.models.VesselModel
 import shipping.track.views.AddVesselScreen
 import shipping.track.views.ListVesselScreen
 import shipping.track.views.MenuScreen
+import shipping.track.views.SearchVesselScreen
 import tornadofx.*
 
 class VesselUIController : Controller() {
@@ -16,9 +17,9 @@ class VesselUIController : Controller() {
     init {
         logger.info { "Launching Vessel TornadoFX UI App" }
     }
-    fun add(_name : String, _arrivalTime : String){
+    fun add(_name : String, _arrivalTime : String, _draught : Double){
 
-        var aVessel = VesselModel(name = _name, arrivalTime = _arrivalTime)
+        var aVessel = VesselModel(name = _name, arrivalTime = _arrivalTime, draught = _draught)
         vessels.create(aVessel)
         logger.info("Vessel Added")
     }
@@ -33,6 +34,12 @@ class VesselUIController : Controller() {
     fun loadAddScreen() {
         runLater {
             find(MenuScreen::class).replaceWith(AddVesselScreen::class, sizeToScene = true, centerOnScreen = true)
+        }
+    }
+
+    fun loadSearchScreen() {
+        runLater {
+            find(MenuScreen::class).replaceWith(SearchVesselScreen::class, sizeToScene = true, centerOnScreen = true)
         }
     }
 

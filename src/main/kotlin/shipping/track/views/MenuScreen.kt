@@ -35,6 +35,28 @@ class MenuScreen : View("Vessel Tracking Main Menu") {
                 }
             }
             text("")
+            button("Update Vessel") {
+
+                isDefaultButton = true
+                useMaxWidth = true
+                action {
+                    runAsyncWithProgress {
+                        vesselUIController.loadAddScreen()
+                    }
+                }
+            }
+            text("")
+            button("Search for Vessel") {
+
+                isDefaultButton = true
+                useMaxWidth = true
+                action {
+                    runAsyncWithProgress {
+                        vesselUIController.loadSearchScreen()
+                    }
+                }
+            }
+            text("")
             button("Exit") {
 
                 isDefaultButton = true

@@ -1,5 +1,6 @@
 package shipping.track.views
 
+import javafx.beans.property.SimpleDoubleProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Orientation
 import shipping.track.controllers.VesselUIController
@@ -10,6 +11,7 @@ class AddVesselScreen : View("Add Vessel") {
     val model = ViewModel()
     val _name = model.bind { SimpleStringProperty() }
     val _arrivalTime = model.bind { SimpleStringProperty() }
+    val _draught = model.bind { SimpleDoubleProperty() }
     val vesselUIController: VesselUIController by inject()
 
     override val root = form {
@@ -21,13 +23,16 @@ class AddVesselScreen : View("Add Vessel") {
             field("Arrival Time") {
                 textarea(_arrivalTime).required()
             }
+            field("Draught") {
+                textfield(_draught).required()
+            }
             button("Add") {
                 enableWhen(model.valid)
                 isDefaultButton = true
                 useMaxWidth = true
                 action {
                     runAsyncWithProgress {
-                        vesselUIController.add(_name.toString(),_arrivalTime.toString())
+                        vesselUIController.add(_name.toString(),_arrivalTime.toString(),_draught.getValue().toDouble())
 
                     }
                 }
