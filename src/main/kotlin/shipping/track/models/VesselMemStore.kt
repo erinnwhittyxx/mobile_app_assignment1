@@ -12,6 +12,7 @@ internal fun getId(): Long {
 class VesselMemStore : VesselStore {
 
     val vessels = ArrayList<VesselModel>()
+    var filteredName = mutableListOf<VesselModel>()
 
     override fun findAll(): List<VesselModel> {
         return vessels
@@ -19,11 +20,6 @@ class VesselMemStore : VesselStore {
 
     override fun findOne(id: Long) : VesselModel? {
         var foundVessel: VesselModel? = vessels.find { p -> p.id == id }
-        return foundVessel
-    }
-
-    override fun findName(name: String): VesselModel? {
-        var foundVessel: VesselModel? = vessels.find { p -> p.name == name }
         return foundVessel
     }
 
@@ -45,6 +41,14 @@ class VesselMemStore : VesselStore {
         vessels.remove(vessel)
     }
 
+    override fun filterByName(name: String) :MutableList<VesselModel> {
+        vessels.forEach{
+            if(it.name.contains(name)){
+                filteredName.add(it)
+            }
+        }
+        return filteredName
+    }
 
     internal fun logAll() {
         vessels.forEach { logger.info("$it") }

@@ -22,6 +22,7 @@ fun generateRandomId(): Long {
 class VesselJSONStore : VesselStore {
 
     var vessels = mutableListOf<VesselModel>()
+    var filteredName = mutableListOf<VesselModel>()
 
     init {
         if (exists(JSON_FILE)) {
@@ -36,11 +37,6 @@ class VesselJSONStore : VesselStore {
     override fun findOne(id: Long): VesselModel? {
         var foundVessel: VesselModel? = vessels.find { p -> p.id == id }
         return foundVessel
-    }
-
-    override fun findName(name: String): MutableList<VesselModel> {
-        var foundVessel: VesselModel? = vessels.find { p -> p.name.contains(name)}
-        for vessel in vessels:
     }
 
     override fun create(vessel: VesselModel) {
@@ -61,6 +57,15 @@ class VesselJSONStore : VesselStore {
     override fun delete(vessel: VesselModel) {
         vessels.remove(vessel)
         serialize()
+    }
+
+    override fun filterByName(name: String) :MutableList<VesselModel> {
+        vessels.forEach{
+            if(it.name.contains(name)){
+                filteredName.add(it)
+            }
+        }
+        return filteredName
     }
 
     internal fun logAll() {

@@ -1,5 +1,6 @@
 package shipping.track.views
 
+import shipping.track.main.vessels
 import shipping.track.models.VesselJSONStore
 import shipping.track.models.VesselModel
 
@@ -82,6 +83,15 @@ class VesselView {
         return false
     }
 
+    fun filteredByVesselName(vessels: VesselJSONStore){
+        var type: String?
+        print("Enter Vessel Name : ")
+        type = readLine()!!
+        println(vessels.filterByName(type))
+        println()
+    }
+
+
     fun getId() : Long {
         var strId : String?
         var searchId : Long
@@ -92,13 +102,5 @@ class VesselView {
         else
             -9
         return searchId
-    }
-
-    fun getName() : String {
-        var strName : String?
-
-        print("Enter Vessel Name: ")
-        strName = readLine()!!
-        return strName
     }
 }

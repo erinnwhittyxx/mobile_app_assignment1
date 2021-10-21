@@ -1,7 +1,7 @@
 package shipping.track.controllers
 
+
 import mu.KotlinLogging
-//import shipping.track.main.controller
 import shipping.track.models.VesselJSONStore
 import shipping.track.models.VesselModel
 import shipping.track.views.VesselView
@@ -82,16 +82,8 @@ class VesselController {
     }
 
     fun filterByName() {
-        val aVessel = filterByName(vesselView.getName())!!
-        vesselView.showVessel(aVessel)
+        vesselView.filteredByVesselName(vessels)
     }
-
-    fun filterByName(name: String) : VesselModel? {
-        var foundVessel = vessels.findName(name)
-        return foundVessel
-
-    }
-
 
     fun search() {
         val aVessel = search(vesselView.getId())!!
