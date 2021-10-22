@@ -21,6 +21,7 @@ class ListVesselScreen : View("List Vessels") {
             readonlyColumn("ID", VesselModel::id)
             readonlyColumn("NAME", VesselModel::name)
             readonlyColumn("ARRIVAL TIME", VesselModel::arrivalTime)
+            readonlyColumn("DRAUGHT", VesselModel::draught)
         }
         button("Close") {
             useMaxWidth = true

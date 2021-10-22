@@ -28,5 +28,35 @@
     "name": "Arklow Dawn",
     "arrivalTime": "20:30",
     "draught": 6.4
+  },
+  {
+    "id": -8922625390475949566,
+    "name": "Adamoon",
+    "arrivalTime": "17:00",
+    "draught": 8.1
+  },
+  {
+    "id": -6189693716529211203,
+    "name": "Plato",
+    "arrivalTime": "06:09",
+    "draught": 5.1
+  },
+  {
+    "id": 1685660627345591075,
+    "name": "X Press Agility",
+    "arrivalTime": "02:00",
+    "draught": 8.1
+  },
+  {
+    "id": 3742361250324615602,
+    "name": "StringProperty [bean: tornadofx.ViewModel@3ca24229, value: Arklow Rover]",
+    "arrivalTime": "StringProperty [bean: tornadofx.ViewModel@3ca24229, value: 17:00]",
+    "draught": 6.0
+  },
+  {
+    "id": -7947727377651969784,
+    "name": "StringProperty [bean: tornadofx.ViewModel@2b89d9fb, value: Arklow Dawn]",
+    "arrivalTime": "StringProperty [bean: tornadofx.ViewModel@2b89d9fb, value: 17:00]",
+    "draught": 6.1
   }
 ]

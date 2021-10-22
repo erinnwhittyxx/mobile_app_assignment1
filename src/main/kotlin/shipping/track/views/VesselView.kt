@@ -2,9 +2,12 @@ package shipping.track.views
 
 import shipping.track.models.VesselJSONStore
 import shipping.track.models.VesselModel
+import java.util.*
 
 
 class VesselView {
+
+    val input = Scanner(System.`in`)
 
     fun menu() : Int {                                                                      //Terminal App Menu
 
@@ -59,9 +62,9 @@ class VesselView {
         print("Enter Estimated Arrival Time : ")
         vessel.arrivalTime = readLine()!!
         print("Enter Vessel Draught :")
-        vessel.draught = readLine()!!.toDouble()
+        vessel.draught = input.nextDouble()
 
-        return vessel.name.isNotEmpty() && vessel.arrivalTime.isNotEmpty() && vessel.draught.isNaN()
+        return vessel.name.isNotEmpty() && vessel.arrivalTime.isNotEmpty()
     }
 
     fun updateVesselData(vessel: VesselModel) : Boolean {                               //Updates vessel parameters; name, arrival time, draught
@@ -78,7 +81,7 @@ class VesselView {
             print("Enter a new Draught for [ " + vessel.draught + " ] : ")
             tempDraught = readLine()!!.toDouble()
 
-            if (!tempName.isNullOrEmpty() && !tempArrivalTime.isNullOrEmpty() && !tempDraught.isNaN()) {
+            if (!tempName.isNullOrEmpty() && !tempArrivalTime.isNullOrEmpty()) {
                 vessel.name = tempName
                 vessel.arrivalTime = tempArrivalTime
                 vessel.draught = tempDraught

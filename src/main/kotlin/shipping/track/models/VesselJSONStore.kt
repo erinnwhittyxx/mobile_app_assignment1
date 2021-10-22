@@ -61,6 +61,7 @@ class VesselJSONStore : VesselStore {
     }
 
     override fun filterByName(name: String) :MutableList<VesselModel> {                   //Iterates over the full list of vessels, and if
+        filteredName.clear()
         vessels.forEach{
             if(it.name.contains(name)){                                                   //a vessels name contains the name searched for it
                 filteredName.add(it)                                                      //adds it to the list
